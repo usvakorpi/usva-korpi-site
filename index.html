@@ -461,8 +461,10 @@
             <span class="lang-fi">Liity ennakkolistalle</span>
             <span class="lang-en">Join the early list</span>
           </a>
-          <a href="blog/index.html" class="btn btn-secondary">
+          <a href="blog/index.html" class="btn btn-secondary lang-fi">
             <span class="lang-fi">Lue teaser-päiväkirjaa</span>
+          </a>
+          <a href="blog/en/index.html" class="btn btn-secondary lang-en">
             <span class="lang-en">Read the writing journal</span>
           </a>
         </div>
@@ -511,13 +513,15 @@
     <h2>Blogi / Blog</h2>
     <p class="lang-fi">Kirjoituspäiväkirja tulevasta teoksesta: tunnelmia, taustaa ja pieniä vihjeitä matkalla julkaisuun.</p>
     <p class="lang-en">A writing journal for the upcoming book: atmosphere notes, process details, and small clues on the road to release.</p>
-    <p><a href="blog/index.html" class="btn btn-secondary"><span class="lang-fi">Lue blogia</span><span class="lang-en">Read the blog</span></a></p>
+    <p class="lang-fi"><a href="blog/index.html" class="btn btn-secondary"><span class="lang-fi">Lue blogia</span></a></p>
+    <p class="lang-en"><a href="blog/en/index.html" class="btn btn-secondary"><span class="lang-en">Read the blog</span></a></p>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="social-links">
-      <a href="blog/index.html">Blog</a>
+      <a href="blog/index.html" class="lang-fi">Blogi</a>
+      <a href="blog/en/index.html" class="lang-en">Blog</a>
       <a href="https://www.tiktok.com/@usvakorpi" target="_blank" rel="noopener noreferrer">TikTok</a>
       <a href="https://www.instagram.com/usvakorpi/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.goodreads.com/search?q=Usva+Korpi" target="_blank" rel="noopener noreferrer">Goodreads</a>
@@ -556,6 +560,30 @@
           syncButtons(lang);
         });
       });
+
+      const form = document.querySelector(".newsletter-form");
+      if (form) {
+        form.addEventListener("submit", () => {
+          const emailInput = form.querySelector('input[name="email"]');
+          const email = emailInput ? String(emailInput.value || "").trim() : "";
+          if (!email) return;
+
+          // Fire-and-forget CRM logging; Buttondown submit remains the source of truth.
+          const crmEndpoint = window.USVA_CRM_ENDPOINT || "https://aino.local:8443/api/satu/crm/subscribe";
+          const lang = body.classList.contains("lang-en") ? "en" : "fi";
+          fetch(crmEndpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email,
+              language: lang,
+              source: "website",
+              acquisition_channel: "buttondown_embed_form",
+              tags: ["newsletter", "teaser-list"]
+            })
+          }).catch(() => {});
+        });
+      }
     })();
   </script>
 
