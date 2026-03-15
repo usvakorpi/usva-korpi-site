@@ -11,7 +11,7 @@
   <meta property="og:title" content="Usva Korpi — Coming Late 2026">
   <meta property="og:description" content="Upcoming Finnish psychological suspense novel. Teaser site and early updates.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="cover_en.png">
+  <meta property="og:image" content="assets/usva-korpi-portrait.png">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap');
@@ -75,13 +75,12 @@
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem;
+      padding: 4.5rem 2rem 6.8rem;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
 
     .hero::before {
@@ -89,12 +88,35 @@
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 50% 40%, rgba(20, 50, 25, 0.4), transparent),
-        radial-gradient(ellipse 60% 40% at 30% 70%, rgba(15, 40, 20, 0.2), transparent);
+        radial-gradient(ellipse 85% 55% at 44% 40%, rgba(24, 56, 30, 0.45), transparent),
+        radial-gradient(ellipse 60% 40% at 72% 56%, rgba(14, 38, 20, 0.3), transparent);
       pointer-events: none;
+      z-index: -3;
     }
 
-    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 12, 10, 0.2), rgba(8, 12, 10, 0.56));
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 100%);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1.8rem, 4vw, 4.4rem);
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 680px;
+      text-align: left;
+    }
 
     .hero-author {
       font-family: 'Inter', sans-serif;
@@ -132,14 +154,88 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent-light);
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .hero-line {
       width: 60px;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--text-dim), transparent);
-      margin: 0 auto 3rem;
+      margin: 0 0 2.4rem;
+    }
+
+    .hero-presence {
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      border: 1px solid rgba(140, 160, 145, 0.27);
+      background: rgba(7, 11, 9, 0.56);
+      color: var(--text-muted);
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-presence::before {
+      content: '';
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #8cad8e, #4e6f51);
+      box-shadow: 0 0 12px rgba(126, 167, 133, 0.5);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 7% -5% -5%;
+      border-radius: 36px;
+      background: radial-gradient(circle at 35% 28%, rgba(192, 214, 200, 0.2), rgba(17, 24, 20, 0.08) 55%, transparent 80%);
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    .hero-portrait-frame {
+      width: min(460px, 100%);
+      border-radius: 30px;
+      padding: 1.1rem;
+      background:
+        linear-gradient(156deg, rgba(145, 162, 148, 0.26), rgba(24, 33, 28, 0.58)),
+        rgba(7, 11, 9, 0.8);
+      border: 1px solid rgba(138, 158, 143, 0.22);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.58),
+        inset 0 0 0 1px rgba(190, 208, 193, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-portrait {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 22px;
+      filter: saturate(0.8) contrast(1.02) brightness(0.84);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-visual-caption {
+      max-width: 420px;
+      text-align: center;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      text-transform: uppercase;
     }
 
     .scroll-hint {
@@ -373,6 +469,27 @@
 
     /* ============== RESPONSIVE ============== */
     @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+        padding: 3.6rem 1.25rem 5.2rem;
+      }
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-content {
+        text-align: center;
+        margin: 0 auto;
+      }
+      .hero-line {
+        margin: 0 auto 2.1rem;
+      }
+      .hero-visual {
+        width: 100%;
+      }
+      .hero-presence {
+        margin: 0 auto;
+      }
       .book-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -391,25 +508,46 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-content">
-      <div class="lang-switch" role="group" aria-label="Kieli / Language">
-        <button type="button" class="lang-btn active" data-lang="fi">FI</button>
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="lang-switch" role="group" aria-label="Kieli / Language">
+          <button type="button" class="lang-btn active" data-lang="fi">FI</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <div class="hero-author">
+          <span class="lang-fi">Kirjailija</span>
+          <span class="lang-en">Author</span>
+        </div>
+        <h1 class="hero-name">Usva Korpi</h1>
+        <div class="hero-line"></div>
+        <p class="hero-tagline">
+          <span class="lang-fi">Missä keho tietää ennen mieltä.<br>Suomalaista psykologista jännitettä.</span>
+          <span class="lang-en">Where body knows before mind.<br>Finnish psychological suspense.</span>
+        </p>
+        <p class="hero-release">
+          <span class="lang-fi">Uusi kirja tulossa loppuvuonna 2026</span>
+          <span class="lang-en">New book coming in late 2026</span>
+        </p>
+        <p class="hero-presence">
+          <span class="lang-fi">Korven Kuuntelija</span>
+          <span class="lang-en">The Listener in the Pines</span>
+        </p>
       </div>
-      <div class="hero-author">
-        <span class="lang-fi">Kirjailija</span>
-        <span class="lang-en">Author</span>
+      <div class="hero-visual">
+        <div class="hero-portrait-frame">
+          <img
+            src="assets/usva-korpi-portrait.png"
+            alt="Usva Korpi -hahmo metsässä sumun keskellä"
+            class="hero-portrait"
+            loading="eager"
+            decoding="async"
+          >
+        </div>
+        <p class="hero-visual-caption">
+          <span class="lang-fi">Metsän rajalta lähetetyt merkinnät.</span>
+          <span class="lang-en">Notes sent from the forest edge.</span>
+        </p>
       </div>
-      <h1 class="hero-name">Usva Korpi</h1>
-      <div class="hero-line"></div>
-      <p class="hero-tagline">
-        <span class="lang-fi">Missä keho tietää ennen mieltä.<br>Suomalaista psykologista jännitettä.</span>
-        <span class="lang-en">Where body knows before mind.<br>Finnish psychological suspense.</span>
-      </p>
-      <p class="hero-release">
-        <span class="lang-fi">Uusi kirja tulossa loppuvuonna 2026</span>
-        <span class="lang-en">New book coming in late 2026</span>
-      </p>
     </div>
     <div class="scroll-hint">
       <span class="lang-fi">Vieritä</span>
