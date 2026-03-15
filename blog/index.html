@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blogi — Usva Korpi</title>
+  <meta name="description" content="Usva Korpi — ajatuksia kirjoittamisesta, metsästä ja mielen varjoista.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@200;300;400;500&display=swap');
+
+    :root {
+      --bg: #0a0f0a;
+      --text: #d4ddd4;
+      --text-muted: #8a9a8a;
+      --text-dim: #5a6a5a;
+      --accent: #3a6a3a;
+      --accent-light: #4a8a4a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .blog-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .blog-back {
+      display: inline-block;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      transition: color 0.3s;
+    }
+    .blog-back:hover { color: var(--accent-light); }
+
+    .blog-header {
+      margin-bottom: 4rem;
+    }
+
+    .blog-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .blog-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .blog-entry {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(90, 106, 90, 0.3);
+    }
+
+    .blog-date {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .blog-title a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .blog-title a:hover { color: var(--accent-light); }
+
+    .blog-summary {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .blog-summary-en {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+
+    .blog-empty {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="blog-container">
+    <a href="../index.html" class="blog-back">&larr; Etusivu / Home</a>
+
+    <header class="blog-header">
+      <h1>Blogi</h1>
+      <p>Ajatuksia kirjoittamisesta, metsästä ja mielen varjoista.</p>
+    </header>
+
+    <article class="blog-entry">
+      <div class="blog-date">2026-03-14</div>
+      <h2 class="blog-title"><a href="2026-03-14_hiljaisuuden-voima-tarinassa.html">Hiljaisuuden voima tarinassa</a></h2>
+      <p class="blog-summary">Hiljaisuus ei ole kirjoittamisessa tyhjyyttä, vaan väylä jännitteen rakentamiseen. Artikkelissa avataan, miten rytmi, aistihavainnot ja rivien väliin jäävä merkitys luovat psykologista painetta.</p>
+      <p class="blog-summary-en">English summary: How silence creates narrative pressure through rhythm, sensory detail, and what remains unsaid.</p>
+    </article>
+  </div>
+</body>
+</html>
